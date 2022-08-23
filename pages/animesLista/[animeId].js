@@ -9,13 +9,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid'
-
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import IconButton from '@mui/material/IconButton';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 const AnimeDetail = () => {
     const router = useRouter()
     const { animeId } = router.query //ver mentoria router query
     const auth = useAuth()
     const [anime, setAnime] = useState(undefined)
-    
+
     useEffect(() => {
         const user = auth.getUserData()
         if (user === null) router.push('/login')
@@ -39,33 +41,43 @@ const AnimeDetail = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '100%',
-                margin: 0
+                marginTop: 5
             }}>
                 <Grid item>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 345,  backgroundColor:'#7D1935'}}>
                         <CardMedia
                             component="img"
                             alt="green iguana"
-                            height="140"
+                            height="300"
                             image={anime.data.images.jpg.large_image_url}
                         />
                         <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
+                            <Typography gutterBottom variant="h5" component="div" color="white">
                                 {anime.data.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
                                 {anime.data.synopsis.slice(0, 300)}
                             </Typography>
-                        </CardContent>
+                            <Grid container 
+                            sx={{display: 'flex',
+                             justifyContent: 'space-between'}}>
+                            <IconButton aria-label="ArrowBackIosNewIcon" onClick={() => router.push('../')}>
+                                <ArrowBackIosNewIcon />
+                            </IconButton>
+                            <IconButton aria-label="Play" onClick={() => router.push(anime.data.trailer.url)}>
+                                <PlayCircleIcon />
+                            </IconButton>
+                        </Grid>
+                    </CardContent>
 
-                    </Card>
-                </Grid>
+                </Card>
             </Grid>
+        </Grid>
 
 
 
 
-        </div>
+        </div >
     )
 }
 export default AnimeDetail

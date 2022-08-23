@@ -8,6 +8,7 @@ import { Typography } from '@mui/material'
 import { padding } from '@mui/system'
 import useAuth from '../hooks/useAuth'
 import { useRouter } from 'next/router'
+import Grid from '@mui/material/Grid'
 
 const Login = () => {
   const auth = useAuth()
@@ -17,17 +18,21 @@ const Login = () => {
   const [password, setPassword] = useState('')
 
   return (
-    <div
+    <Grid container
       sx={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 10,
+        
       }}
     >
+      
       <Box
         component="form"
         sx={{
-          maxWidth: '400px',
+          backgroundColor: '#7D1935',
+          width: '400px',
           height: '450px',
           display: 'flex',
           flexDirection: 'column',
@@ -62,6 +67,7 @@ const Login = () => {
         <Stack spacing={2} direction="column">
           <Button
             variant="contained"
+            
             onClick={() => {
               auth
                 .loginWithEmailAndPassword(email, password)
@@ -76,7 +82,7 @@ const Login = () => {
           >
             Iniciar Sesión
           </Button>
-          <p>O</p>
+          
           <Button
             variant="contained"
             onClick={() => {
@@ -91,11 +97,12 @@ const Login = () => {
                 })
             }}
           >
-            Google
+            Continua con tu cuenta de Google
           </Button>
         </Stack>
       </Box>
-    </div>
+      </Grid>
+    
   )
 }
 

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/Header/Header'
+import MyHome from '../components/Home/MyHome'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import AnimeCard from '../components/Card/Card'
@@ -26,6 +27,7 @@ export default function Home() {
         <title>AnimesFlix</title>
       </Head>
       <Header></Header>
+      <MyHome></MyHome>
       <Grid container sx={{
         width:'100%',
         padding: 10,
@@ -45,6 +47,7 @@ export default function Home() {
                 <AnimeCard
 
                   titulo={anime.title}
+                  rating={anime.rating}
                   imagen={anime.images.webp.image_url}
                 />
               </Box>

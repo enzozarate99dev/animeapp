@@ -7,27 +7,30 @@ import { CardActionArea } from '@mui/material';
 import Grid from '@mui/material/Grid'
 import Link from 'next/link'
 
-export default function AnimeCard({ titulo, imagen, animeId }) {
+export default function AnimeCard({ titulo, imagen, animeId, rating }) {
 
 
   return (
     
       
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, backgroundColor:'#7D1935', height: 400  }}>
           <CardActionArea>
            
               
-                <CardMedia
+                <CardMedia 
+                
                   component="img"
-                  height="140"
+                  height="240"
                   image={imagen}
 
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h5" component="div" color="white">
                     {titulo}
                   </Typography>
-
+                  <Typography variant="body2" color="text.secondary">
+                  Categoría: {rating}
+        </Typography>
                 </CardContent>
               
           </CardActionArea>

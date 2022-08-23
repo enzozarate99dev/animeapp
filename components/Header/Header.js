@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <Box>
-      <AppBar position="static">
+      <AppBar position="static" className={styles.nav}>
         <Toolbar>
           <Typography
             variant="h6"
@@ -37,7 +37,7 @@ export default function Header() {
             sx={{ flexGrow: 1 }}
             className={styles.title}
           >
-            {user ? user.displayName : 'Usuario no logueado'}
+            {user ? user.displayName : 'No iniciaste Sesión'}
           </Typography>
           <div>
             <IconButton
